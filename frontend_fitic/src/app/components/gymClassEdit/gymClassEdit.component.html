@@ -1,0 +1,40 @@
+<div class="user-edit-form container bg-dark mt-2">
+  <h2 class="text-center text-white">Editar Clase</h2>
+  <form (ngSubmit)="save()" class="row g-3">
+    <div class="col-md-6 form-group">
+      <label for="username" class="text-white">Nombre de la clase:</label>
+      <input type="text" class="form-control" id="username" name="name" [(ngModel)]="gymClass.name" required>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="description" class="text-white">Descripción:</label>
+      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="gymClass.description" required>
+    </div>
+
+    
+    <div class="col-md-6 form-group">
+      <label for="instructor" class="text-white">Instructor:</label>
+      <select class="form-control" name="users" id="users" [(ngModel)]="gymClass.instructor">
+        <option value="" selected>{{gymClass.instructor}}</option>
+
+        <option *ngFor="let user of users" [value]="user.name">{{user.name}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="maxParticipants" class="text-white">Numero máximo de participantes:</label>
+      <input type="number" class="form-control" id="maxParticipants" name="maxParticipants" [(ngModel)]="gymClass.maxParticipants">
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="reservationDate" class="text-white">Fecha de la clase:</label>
+      <input type="datetime-local" class="form-control" id="reservationDate" name="duration" [(ngModel)]="gymClass.reservationDate" [min]="minDateTime">
+    </div>
+    
+
+    <div class="col-12 form-buttons d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary m-3">Guardar</button>
+      <button type="button" class="btn btn-secondary m-3" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>

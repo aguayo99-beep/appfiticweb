@@ -1,0 +1,42 @@
+<div class="register-form container bg-dark mt-2">
+  <h2 class="text-center text-white">Añadir clase</h2>
+  <form (ngSubmit)="addGymClass()" class="row g-3">
+    <div class="col-md-6 form-group">
+      <label for="username" class="text-white">Nombre de la clase:</label>
+      <input type="text" class="form-control" id="username" name="name" [(ngModel)]="gymClass.name" required>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="description" class="text-white">Descripción:</label>
+      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="gymClass.description" required>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="instructor" class="text-white">Instructor:</label>
+      <select class="form-control" name="users" id="users" [(ngModel)]="selectedInstructor">
+        <option value="" selected>Selecciona un monitor</option>
+        <option *ngFor="let user of users" [value]="user.name">{{user.name}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="maxParticipants" class="text-white">Número máximo de participantes</label>
+      <input type="number" class="form-control" id="maxParticipants" name="maxParticipants" [(ngModel)]="gymClass.maxParticipants">
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="reservationDate" class="text-white">Fecha de la clase:</label>
+      <input type="datetime-local" class="form-control" id="reservationDate" name="reservationDate" [(ngModel)]="gymClass.reservationDate">
+    </div>
+
+    <div class="col-12 form-buttons d-flex justify-content-center">
+      <input type="submit" class="btn btn-primary m-3" value="Añadir clase">
+      <button type="button" class="btn btn-secondary m-3" (click)="cancel()">Cancelar</button>
+     
+    </div>
+  </form>
+
+  <div class="alert alert-danger alert-error" role="alert" *ngIf="error!=''"> 
+    {{error}}
+  </div>
+</div>

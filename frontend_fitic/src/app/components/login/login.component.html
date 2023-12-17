@@ -1,0 +1,21 @@
+<div class="login-form">
+  <h2>Inicio de sesion</h2>
+  <form (ngSubmit)="login()" method="post" class="d-flex flex-column align-items-center">
+    <div class="group input-field w-75">
+      <i class="fa fa-user"></i>
+      <label for="Nombre de usuario" class="text-center">Nombre de usuario</label>
+      <input id="username" type="text" class="input" [(ngModel)]="userLogin.username" name="username" required>
+      <span *ngIf="incorrectLogin" class="mt-1 text-danger">Nombre de usuario y/o contraseña incorrectos</span>
+    </div>
+
+    <div class="group input-field w-75">
+      <label for="Contraseña" class="text-center">Contraseña</label>
+      <i class="fa fa-lock"></i>
+      <input id="password" type="password" class="input" [(ngModel)]="userLogin.password" name="password" required>
+    </div>
+
+    <div class="group w-50 ">
+      <input type="submit" class="button" value="Entrar">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+
+
+body{
+	
+	color:#6a6f8c;
+	background:#c8c8c8;	
+}
+
+.div-authentication{
+	margin: 0px auto;
+	margin-top: 8%;
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}

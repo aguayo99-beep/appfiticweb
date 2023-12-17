@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/logo.png" href="#" alt="Logo" width="35" height="35">
+        </a>
+        
+        <!-- Botón de menú para pantallas pequeñas -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Elementos del menú -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Gestión de Clientes -->
+                <li class="nav-item ">
+                    <a class="nav-link text-white" routerLink="/admin/gestion-clientes" (click)="navigationClients()" routerLinkActive="active">Gestión de Clientes</a>
+                </li>
+
+                <!-- Gestión de Clases -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/gestion-clases" (click)="navigationClasses()" routerLinkActive="active">Gestión de Clases</a>
+                </li>
+
+                <!-- Gestión de Reservas -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/gestion-reservas" (click)="navigationReservations()" routerLinkActive="active">Gestión de reservas</a>
+                </li>
+            </ul>
+
+            <!-- Botón de Cerrar Sesión -->
+            <button class="btn btn-outline-success" type="button" (click)="logout()">Cerrar sesión</button>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,84 @@
+<div class="user-edit-form container bg-dark mt-2 col-9">
+  <h2 class="text-center text-white">Editar Usuario</h2>
+  <form (ngSubmit)="save()" class="row g-3">
+    <div class="col-md-6 form-group">
+      <label for="username" class="text-white">Nombre de usuario:</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="email" class="text-white">Correo electrónico:</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="name" class="text-white">Nombre:</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" required>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="lastname" class="text-white">Apellidos:</label>
+      <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="user.lastname" required>
+    </div>
+
+    
+
+    <div class="col-12 form-buttons d-flex justify-content-center ">
+      <button type="submit" class="btn btn-primary m-3">Guardar</button>
+      <button type="button" class="btn btn-secondary m-3" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+
+<div class="management-gymclass" class="d-flex flex-column align-items-center">
+<div class="invoices-list table-responsive col-9" >
+  <h3 class="text-center">Facturas del cliente</h3>
+
+  <table mat-table [dataSource]="invoices" matSort class="table table-hover table-striped mb-0 ">
+    <ng-container *ngFor="let col of displayedColumnsInvoices" [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ columnNamesInvoices[col] }} </th>      
+      <td mat-cell *matCellDef="let element" class="custom-row">
+        <ng-container *ngIf="col !== 'acciones'; else accionesColumn">
+          {{ element[col] }}
+        </ng-container>
+        <ng-template #accionesColumn>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsInvoices" class="custom-header"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsInvoices"></tr>
+  </table>
+
+  <mat-paginator [length]="100" [pageSize]="10" aria-label="Select page" class="custom-paginator">
+  </mat-paginator>
+</div>
+
+
+<div class="reservations-list table-responsive col-9" >
+  <h3 class="text-center">Reservas del cliente</h3>
+
+  <table mat-table [dataSource]="gymClassReservations" matSort class="table table-hover table-striped mb-0">
+    <ng-container *ngFor="let col of displayedColumnsReservations" [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-header"> {{ columnNamesReservations[col] }} </th>
+      <td mat-cell *matCellDef="let element" class="custom-row">
+        <ng-container *ngIf="col !== 'acciones'; else accionesColumn">
+          {{ element[col] }}
+        </ng-container>
+        <ng-template #accionesColumn>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsReservations" class="custom-header"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsReservations"></tr>
+  </table>
+
+  <mat-paginator [length]="100" [pageSize]="10" aria-label="Select page" class="custom-paginator">
+  </mat-paginator>
+</div>
+</div>
+
+
+

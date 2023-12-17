@@ -1,0 +1,85 @@
+
+.login-form {
+	background-color: #ffffff;
+	opacity: 0.85;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	width: 100%;
+  }
+  .login-form h2 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
+  }
+  .group {
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+  }
+  .group label {
+	color: #333;
+	display: block;
+	margin-bottom: 5px;
+  }
+  .input {
+	width: 70%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+	
+  }
+  .button {
+	width: 100%;
+	padding: 10px;
+	background-color: #667eea;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+  .button:hover {
+	background-color: #5865c3;
+  }
+  .login-form .fa {
+	position: absolute;
+	margin-top: 17px;
+	margin-left: 10px;
+	color: #333;
+  }
+  .input-field {
+	position: relative;
+  }
+  .input-field input {
+	padding-left: 30px;
+  }
+  .checkbox {
+	display: flex;
+	align-items: center;
+  }
+  .checkbox input {
+	margin-right: 10px;
+  }
+  .login-form a {
+	text-decoration: none;
+	color: #667eea;
+	font-size: 0.8rem;
+  }
+  .login-form a:hover {
+	color: #5865c3;
+  }
+  .remember-me {
+	float: left;
+	font-size: 0.8rem;
+	color: #333;
+  }
+  .forgot-password {
+	float: right;
+	font-size: 0.8rem;
+  }
+
+  

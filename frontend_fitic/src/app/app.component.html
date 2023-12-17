@@ -1,0 +1,4 @@
+<app-authentication  *ngIf="!esRutaCliente() && !esRutaAdministrador()" class="col-12">
+</app-authentication>
+<router-outlet *ngIf="esRutaCliente() || esRutaAdministrador()"></router-outlet>
+

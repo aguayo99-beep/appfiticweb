@@ -1,0 +1,20 @@
+@media (max-width: 991px) {
+    #navbarResponsive {
+        text-align: center;
+    }
+    #navbarResponsive .navbar-nav {
+        width: 100%;
+        justify-content: center;
+    }
+    #navbarResponsive .nav-item {
+        width: 100%; 
+    }
+}
+
+
+.nav-item:hover, .active {
+    background-color: #0077B6;
+    border-radius: 20px;
+
+}
+

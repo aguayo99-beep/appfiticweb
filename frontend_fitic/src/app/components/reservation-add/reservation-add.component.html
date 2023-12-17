@@ -1,0 +1,66 @@
+<div class="d-flex flex-column justify-content-center">
+  <h3 class="text-center">Elige el cliente</h3>
+
+
+  <div class="search-bar col-6 col-md-6 col-lg-5 col-9" *ngIf="!userSelect">
+    <input type="text" (keyup)="search(searchTermUser)" class="col-sm-9" [(ngModel)]="searchTermUser"
+      placeholder="Buscar usuarios..." />
+    <button (click)="applyFilter()" class="col-sm-3">Buscar</button>
+
+
+  </div>
+
+  <div class="d-flex flex-column align-items-center">
+    <div class="user-list table-responsive col-12 col-md-6 col-lg-5">
+      <table mat-table [dataSource]="users" matSort class="table table-hover table-striped mb-0 ">
+
+        <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ columnNames[col] }} </th>
+          <td mat-cell *matCellDef="let element" class="custom-row">
+            <ng-container *ngIf="col !== 'acciones'; else accionesColumn">
+              {{ element[col] }}
+            </ng-container>
+            <ng-template #accionesColumn>
+              <button mat-button (click)="selectUser(element)" class="btn btn-primary mx-0"
+                [ngClass]="{'btn-danger': userSelect, 'btn-primary': !userSelect}">
+                {{ userSelect ? 'Eliminar' : 'Seleccionar' }}
+              </button>
+
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="custom-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator [length]="100" [pageSize]="5" aria-label="Select page" class="custom-paginator">
+      </mat-paginator>
+    </div>
+
+  </div>
+
+
+  <div class="">
+    <h3 class="text-center my-4">Elige la clase que le quieres asignar</h3>
+    <div class="mb-3 d-flex justify-content-center">
+      <label for="clases" class="form-label"></label>
+      <select name="clases" id="clases" class="form-select w-25" [(ngModel)]="selectedGymClass">
+        <option value="" selected>Seleccionar una clase</option>
+        <option *ngFor="let gymClass of gymClasses" [ngValue]="gymClass._id">{{gymClass.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button (click)="addGymClassReservation()" class="btn btn-primary m-3">Añadir reserva</button>
+    <button type="button" class="btn btn-secondary m-3 " (click)="cancel()">Cancelar</button>
+
+
+  </div>
+
+  <div class="alert alert-danger alert-error" role="alert" *ngIf="error!=''">
+    {{error}}
+  </div>
+
+</div>

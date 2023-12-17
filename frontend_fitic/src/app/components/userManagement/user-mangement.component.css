@@ -1,0 +1,22 @@
+.custom-header {
+    background-color: #191795; 
+   
+  }
+
+  .custom-header th {
+    color: #faf9f9; 
+  }
+  
+  .custom-row {
+    background-color: #04053a; 
+    color: #faf9f9; 
+    text-align: center;
+  }
+ 
+  .custom-paginator{
+    background-color: #3335a7; 
+    color: #faf9f9; 
+    display: flex;
+    justify-content: end;
+  }
+  

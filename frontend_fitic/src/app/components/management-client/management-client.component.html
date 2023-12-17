@@ -1,0 +1,75 @@
+<app-navigation (navigationClientsEmit)="navigation()"></app-navigation>
+<!--
+  <div class="management-client">
+    <div class="search-bar">
+      <input type="text" (keyup)="searchUsers()" [(ngModel)]="searchTerm" placeholder="Buscar usuarios..." />
+      <button (click)="searchUsers()">Buscar</button>
+    </div>
+  
+    <div class="user-list">
+      <div *ngFor="let user of users">
+        <div class="user-details">
+          <p><strong>Nombre:</strong> {{ user.name }} {{ user.lastname }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+-->
+<app-user-add *ngIf="isAddForm" (onCancel)="cancelAdd()"></app-user-add>
+<button (click)="addUser()" class="btn btn-primary m-3" *ngIf="!isAddForm">Añadir usuario</button>
+
+<div class="management-client" *ngIf="!isEditionForm" class="d-flex flex-column align-items-center">
+
+  <div class="search-bar col-6 col-md-6 col-lg-5 col-9">
+    <input type="text" (keyup)="search(searchTerm)" class="col-sm-9" [(ngModel)]="searchTerm"
+      placeholder="Buscar usuarios..." />
+    <button (click)="applyFilter()" class="col-sm-3">Buscar</button>
+  </div>
+
+  <div class="user-list table-responsive col-12 col-md-10 col-lg-5 col-sm-12">
+    <table mat-table [dataSource]="users" matSort class="table table-hover table-striped mb-0 ">
+
+      <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> {{ columnNames[col] }} </th>
+        <td mat-cell *matCellDef="let element" class="custom-row">
+          <ng-container *ngIf="col !== 'acciones'; else accionesColumn">
+            {{ element[col] }}
+          </ng-container>
+          <ng-template #accionesColumn>
+            <button mat-button (click)="editUser(element)" class="btn btn-primary mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+              </svg> </button>
+            <button mat-button (click)="deleteUser(element)" class="btn btn-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="custom-header"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [length]="100" [pageSize]="10" aria-label="Select page" class="custom-paginator">
+    </mat-paginator>
+  </div>
+
+</div>
+
+
+<app-user-mangement *ngIf="isEditionForm" [user]="selectedUser" (onSave)="saveUser($event)"
+  (onCancel)="cancelEdit()"></app-user-mangement>
+
+
+
+
