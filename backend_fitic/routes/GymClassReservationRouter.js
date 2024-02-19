@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 console.log("Hola2");
-const gymClassReservationController = require('../controllers/GymClassReservationController');
+const gymClassReservationController = require('../controllers/gymClassReservationController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 //Rutas protegidas con JWT authentication para reservas de clases de gimnasia
