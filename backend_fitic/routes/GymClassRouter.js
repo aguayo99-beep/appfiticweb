@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 console.log("Hola1");
-const gymClassController = require('../backend_fitic/controllers/gymClassController');
+const gymClassController = require('../controllers/gymClassController');
 
 //Obtener todas las clases de gimnasia
 router.get('/gymClasses', gymClassController.getAllGymClasses);
