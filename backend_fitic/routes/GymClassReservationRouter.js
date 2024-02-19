@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+console.log("Hola2");
 const gymClassReservationController = require('../controllers/GymClassReservationController');
 const authMiddleware = require('../middleware/authMiddleware');
 
