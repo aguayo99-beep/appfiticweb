@@ -32,8 +32,9 @@ mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: t
 app.use('/api/auth', authRoutes); // Rutas de autenticación
 app.use('/api/user', userRoutes); // Rutas de usuario
 app.use('/api/invoices', invoiceUserRoutes); // Rutas de facturas
-app.use('/api/gymclass', gymClassRouter); // Rutas de clases
 app.use('/api/gymclassreservation', gymClassReservation); // Rutas de reservas de clase
+
+app.use('/api/gymclass', gymClassRouter); // Rutas de clases
 // Rutas
 //app.use('/api/auth', authRoutes); // Rutas de reservas de clase
 //app.use('/api/user', userRoutes);
