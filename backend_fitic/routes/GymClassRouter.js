@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 console.log("Hola1");
-const gymClassController = require('../controllers/GymClassController');
+const gymClassController = require('./controllers/GymClassController');
 
 //Obtener todas las clases de gimnasia
 router.get('/gymClasses', gymClassController.getAllGymClasses);
